@@ -1,10 +1,26 @@
-let gameBoard = [];
-function addColumns(rowValue) {
-    for (let i = 1; i<=3; i++) {
-        gameBoard.push(rowValue + i)
-        }
-    }
-let row = ['A','B','C'];
-row.forEach(row => addColumns(row))
+const game = (() => {
+    //create a new board with empty(null values)
+    const newBoard = () => {
+        let cells = [];
+        function addColumns(rowValue) {
+        for (let i = 1; i<=3; i++) {
+            cells.push(rowValue + i)
+            }
+        };
+        let row = ['A','B','C'];
+        row.forEach(row => addColumns(row));
+        let gameboard = {};
+        for (key of cells) {
+            gameboard[key] = null;
+        };
+        return gameboard;
+    };
+
     
-console.log(gameBoard);
+
+    return {
+        newBoard,
+    };
+})();
+
+console.log(game.newBoard())
