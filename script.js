@@ -16,11 +16,13 @@ const game = (() => {
         return gameboard;
     };
 
-    
+
 
     return {
         newBoard,
     };
 })();
 
-console.log(game.newBoard())
+let gameBoard = game.newBoard();
+gameBoard.B2 = 'X';
+console.log(gameBoard);
