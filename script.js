@@ -4,6 +4,7 @@ const game = (() => {
     
         const newBoard = () => {
             let cells = [];
+            let gameDom = document.getElementById("gameContainer");
             function addColumns(rowValue) {
             for (let i = 1; i<=3; i++) {
                 cells.push(rowValue + i)
@@ -14,6 +15,10 @@ const game = (() => {
             let gameboard = {};
             for (key of cells) {
                 gameboard[key] = null;
+                let cell  = document.createElement('div');
+                cell.id = key;
+                cell.classList.add('cell');
+                gameDom.appendChild(cell);
             };
             return gameboard;
         };
