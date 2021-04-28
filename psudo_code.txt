@@ -11,6 +11,7 @@ game {
         vertical   A1,B1,C1 | A2,B2,C2 | A3,B3,C3  
     }
     checkWin()
+    checkEnd (no win and selected > 4)
     turn = (player1/player2)
     switchTurn()
 
