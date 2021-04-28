@@ -1,10 +1,15 @@
 game {
+    //gameboard
     newBoard()
+    
+    //player
     create player() (player 1 and player 2)
     player {mark:(X/O), 
     selected(how many selected)
     select()
     }
+
+    //gameFunctions
     winPossibilities {
         horizontal A1,A2,A3 | B1,B2,B3 | C1,C2,C3
         Diaganol   A1,B2,C3 | C1,B2,A3 | 
