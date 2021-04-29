@@ -1,0 +1,19 @@
+game {
+    newBoard()
+    create player() (player 1 and player 2)
+    player {mark:(X/O), 
+    selected(how many selected)
+    select()
+    }
+    winPossibilities {
+        horizontal A1,A2,A3 | B1,B2,B3 | C1,C2,C3
+        Diaganol   A1,B2,C3 | C1,B2,A3 | 
+        vertical   A1,B1,C1 | A2,B2,C2 | A3,B3,C3  
+    }
+    checkWin()
+    checkEnd (no win and selected > 4)
+    turn = (player1/player2)
+    switchTurn()
+
+}
+
