@@ -20,26 +20,43 @@ const game = (() => {
                 cell.classList.add('cell');
                 gameDom.appendChild(cell);
             };
+            // gameDom.addEventListener('click', (e) => {
+            //     let target = e.target;
+            //     console.log(target.id);
+            //     console.log(target.className);
+            // }
+            //);
             return gameboard;
         };
     
-        return {newBoard};
-    
-})();
+    return {newBoard};
+    })();
 
     const player = (name, mark) => {
-        const select = (value) => {
-            if (value !== 'undefined') {
-            return value;
-        }
+        const select = () => {
+            value = game.gamePlay.listen();
+            return value
         }
         return {name, mark, select}
     }
-
+    
+    const gamePlay = (() => {
+        const listen = () => {
+            let gameDom = document.getElementById("gameContainer");
+            gameDom.addEventListener('click', (e) => {
+                let target = e.target;
+                console.log(target.id)
+                return target.id
+                }
+            )}
+    return {listen}
+    })()
 
     return {
-        player, gameBoard
+        player, gameBoard, gamePlay
     };
+
+    
 })();
 
 
