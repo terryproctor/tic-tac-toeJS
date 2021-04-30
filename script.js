@@ -20,43 +20,38 @@ const game = (() => {
                 cell.classList.add('cell');
                 gameDom.appendChild(cell);
             };
-            // gameDom.addEventListener('click', (e) => {
-            //     let target = e.target;
-            //     console.log(target.id);
-            //     console.log(target.className);
-            // }
-            //);
+            
             return gameboard;
         };
-    
     return {newBoard};
     })();
 
     const player = (name, mark) => {
-        const select = () => {
-            value = game.gamePlay.listen();
-            return value
+        let _selectedVal = '';
+
+        const getSelected = () => {
+            return _selectedVal
         }
-        return {name, mark, select}
+        
+        const select = () => {
+            let gameDom = document.getElementById("gameContainer");
+    
+            gameDom.addEventListener('click', (e) => {
+                    _selectedVal = e.target.id;
+                })
+            
+            };
+        return {name, mark, select, getSelected}
     }
     
-    const gamePlay = (() => {
-        const listen = () => {
-            let gameDom = document.getElementById("gameContainer");
-            gameDom.addEventListener('click', (e) => {
-                let target = e.target;
-                console.log(target.id)
-                return target.id
-                }
-            )}
-    return {listen}
-    })()
-
+    ///game properties
     return {
-        player, gameBoard, gamePlay
+        player, gameBoard,
     };
-
-    
 })();
+
+
+game.gameBoard.newBoard()
+let player1 = game.player('player1', 'X');
 
 

@@ -6,6 +6,10 @@
     height: 30vh;
 }
 
+.cell:hover {
+    cursor:pointer;
+    }
+
 #gameArea {
     width: 100vw;
     height: 100%;
