@@ -4,6 +4,8 @@
     border: 1px solid;
     min-width: 32%;
     height: 30vh;
+    text-align: center;
+    text-justify: center;
 }
 
 .cell:hover {
@@ -13,7 +15,7 @@
 #gameArea {
     width: 100vw;
     height: 100%;
-    background-color: rgb(229, 233, 231);
+    
     
 }
 
@@ -21,4 +23,20 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+#A1, #B1, #C1 {
+    border-left: none;
+}
+
+#A3, #B3, #C3 {
+    border-right: none;
+}
+
+#A1, #A2, #A3 {
+    border-top: none;
+}
+
+#C1, #C2, #C3 {
+    border-bottom: none;
 }

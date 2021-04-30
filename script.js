@@ -1,7 +1,7 @@
 const game = (() => {
     //create a new board with empty(null values)
     const gameBoard = (() => {
-    
+        //create a newboard
         const newBoard = () => {
             let cells = [];
             let gameDom = document.getElementById("gameContainer");
@@ -14,7 +14,7 @@ const game = (() => {
             row.forEach(row => addColumns(row));
             let gameboard = {};
             for (key of cells) {
-                gameboard[key] = null;
+                gameboard[key] = '';
                 let cell  = document.createElement('div');
                 cell.id = key;
                 cell.classList.add('cell');
@@ -23,7 +23,17 @@ const game = (() => {
             
             return gameboard;
         };
-    return {newBoard};
+        //show updates to the board
+        const displayBoard = (board) => {
+            for (key in board) {
+                cell = document.getElementById([key]);
+                cell.textContent = (board[key])
+            }
+            
+        }
+
+
+    return {newBoard, displayBoard};
     })();
 
     const player = (name, mark) => {
@@ -51,7 +61,8 @@ const game = (() => {
 })();
 
 
-game.gameBoard.newBoard()
-let player1 = game.player('player1', 'X');
+const board = game.gameBoard.newBoard()
+const player1 = game.player('player1', 'X');
+const player2 = game.player('player2', 'O');
 
-
+console.log(board)
