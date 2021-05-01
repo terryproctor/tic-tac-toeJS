@@ -1,9 +1,7 @@
 .cell {
-    width: 150px;
-    height: 150px;
+    width: 20vw;
+    height: 25vh;
     border: 1px solid;
-    min-width: 32%;
-    height: 30vh;
     text-align: center;
     text-justify: center;
 }
@@ -23,6 +21,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 80vw;
+    margin: 50px auto;
 }
 
 #A1, #B1, #C1 {
