@@ -1,7 +1,7 @@
 const game = (() => {
     //create a new board with empty(null values)
     const gameBoard = (() => {
-        let _board = ""
+        let _board = {}
         //create a newboard
         const newBoard = () => {
             let cells = [];
@@ -21,7 +21,7 @@ const game = (() => {
                 cell.classList.add('cell');
                 gameDom.appendChild(cell);
             };
-            _board = gameboard
+            _board = gameboard;
             return gameboard;
         };
         //show updates to the board
@@ -34,7 +34,7 @@ const game = (() => {
         }
 
 
-    return {newBoard, displayBoard};
+    return {newBoard, displayBoard, _board};
     })();
 
     const player = (name, mark) => {
@@ -69,12 +69,9 @@ const game = (() => {
     };
 })();
 
-
-let board = game.gameBoard;
+const board = game.gameBoard;
 board.newBoard();
 const player1 = game.player('player1', 'X');
 const player2 = game.player('player2', 'O');
 
 player1.select();
-
-

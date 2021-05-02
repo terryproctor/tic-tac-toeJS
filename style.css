@@ -29,18 +29,20 @@
     margin: 50px auto;
 }
 
-#A1, #B1, #C1 {
+[id="1"], [id="4"], [id="7"], [id="2"], [id="5"], 
+[id="8"], [id="9"], [id="6"], [id="3"]    {
     border-left: none;
 }
 
-#A3, #B3, #C3 {
+[id="3"], [id="6"], [id="9"] {
     border-right: none;
 }
 
-#A1, #A2, #A3 {
+[id="1"], [id="2"], [id="3"], [id="4"], [id="5"], 
+[id="6"], [id="7"], [id="8"], [id="9"] {
     border-top: none;
 }
 
-#C1, #C2, #C3 {
+[id="7"], [id="8"], [id="9"] {
     border-bottom: none;
 }
