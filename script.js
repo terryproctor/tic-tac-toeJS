@@ -1,6 +1,7 @@
 const game = (() => {
     //create a new board with empty(null values)
     const gameBoard = (() => {
+        let _board = ""
         //create a newboard
         const newBoard = () => {
             let cells = [];
@@ -20,7 +21,7 @@ const game = (() => {
                 cell.classList.add('cell');
                 gameDom.appendChild(cell);
             };
-            
+            _board = gameboard
             return gameboard;
         };
         //show updates to the board
@@ -46,10 +47,18 @@ const game = (() => {
         const select = () => {
             let gameDom = document.getElementById("gameContainer");
     
-            gameDom.addEventListener('click', (e) => {
-                    _selectedVal = e.target.id;
-                })
-            
+            let on = (e) => {
+                if(board[e.target.id] === '') {    
+                _selectedVal = e.target.id;
+                gameDom.removeEventListener('click' , (e) => on(e));
+                board[e.target.id] = _selectedVal;
+                board.displayBoard()
+                }
+                }
+
+            gameDom.addEventListener('click', (e) => on(e))
+                
+            return _selectedVal;
             };
         return {name, mark, select, getSelected}
     }
@@ -61,8 +70,11 @@ const game = (() => {
 })();
 
 
-const board = game.gameBoard.newBoard()
+let board = game.gameBoard;
+board.newBoard();
 const player1 = game.player('player1', 'X');
 const player2 = game.player('player2', 'O');
 
-console.log(board)
+player1.select();
+
+
