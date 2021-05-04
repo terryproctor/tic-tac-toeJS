@@ -31,12 +31,12 @@ const player = (mark, name) => {
 
     const on = (e) => {
         if (gb._gameboard[e.target.id] == '') {
-            console.log(gb._gameboard)
-            console.log(e.target.id);
-            console.log(mark);
+            // console.log(gb._gameboard)
+            // console.log(e.target.id);
+            // console.log(mark);
             gb._gameboard[e.target.id] = mark;
             e.target.textContent = mark;
-            console.log(gameDom)
+            // console.log(gameDom)
             gameDom.removeEventListener('click', on)
             return
         }
@@ -50,9 +50,33 @@ const player = (mark, name) => {
 return {mark, name, selectCell}
 }
 
+const gameplay = (() => {
+    let currentPlayer = null;
+
+    const checkPlayer = () => {
+        currentPlayer = (currentPlayer === null) ? player1 : currentPlayer; 
+        return currentPlayer;
+    }
+
+    const switchPlayer = () => {
+        if (currentPlayer === player2) {
+            currentPlayer = player1;
+            return currentPlayer;} else if (currentPlayer === player1) {
+            currentPlayer = player2;
+            return currentPlayer;
+        }
+    }
+
+return {currentPlayer, switchPlayer, checkPlayer}
+})()
+
 
 const gb = board;
 gb.createBoard();
 let player1 = player('X', 'Terry');
 let player2 = player('O', 'Barry');
-
+const game = gameplay;
+cPlayer = gameplay.checkPlayer();
+cPlayer.selectCell();
+cPlayer = gameplay.switchPlayer();
+                                         
