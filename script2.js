@@ -30,35 +30,39 @@ const player = (mark, name) => {
     this.name = name;
 
     let _selectedVal;
+    
 
     const on = (e) => {
         if (gb._gameboard[e.target.id] == '') {
-            // console.log(gb._gameboard)
-            // console.log(e.target.id);
-            // console.log(mark);
+            e.preventDefault();
+            
             gb._gameboard[e.target.id] = mark;
             e.target.textContent = mark;
-            // console.log(gameDom)
+    
             gameDom.removeEventListener('click', on)
-            return e.target.id
+            
+            return
         }
     }
     
     const selectCell = () => {
         _selectedVal = gameDom.addEventListener('click', on)
+        console.log('Hi')
+        gb.counter++
         return
         }
 
-    // const getSelected = () => {
-    //     return _selectedVal
-    //     }
+    const getSelected = () => {
+        return _selectedVal
+      }
 
         
-return {mark, name, selectCell, }
+return {mark, name, selectCell, getSelected}
 }
 
 const gameplay = (() => {
     let currentPlayer = null;
+    let counter = 0;
 
     const checkPlayer = () => {
         currentPlayer = (currentPlayer === null) ? player1 : currentPlayer; 
@@ -74,7 +78,7 @@ const gameplay = (() => {
         }
     }
 
-return {currentPlayer, switchPlayer, checkPlayer}
+return {currentPlayer, switchPlayer, checkPlayer, counter}
 })()
 
 
@@ -83,10 +87,31 @@ gb.createBoard();
 let player1 = player('X', 'Terry');
 let player2 = player('O', 'Barry');
 const game = gameplay;
-
+let flag = true;
 let move1 = player1.selectCell();
 let move2 = player2.selectCell();
 let move3 = player1.selectCell();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // cyborg's in deep thoughts — Today at 8:18 AM
