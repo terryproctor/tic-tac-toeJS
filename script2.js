@@ -29,6 +29,8 @@ const player = (mark, name) => {
     this.mark = mark;
     this.name = name;
 
+    let _selectedVal;
+
     const on = (e) => {
         if (gb._gameboard[e.target.id] == '') {
             // console.log(gb._gameboard)
@@ -38,16 +40,21 @@ const player = (mark, name) => {
             e.target.textContent = mark;
             // console.log(gameDom)
             gameDom.removeEventListener('click', on)
-            return
+            return e.target.id
         }
     }
     
     const selectCell = () => {
-        gameDom.addEventListener('click', on)
+        _selectedVal = gameDom.addEventListener('click', on)
+        return
         }
 
+    // const getSelected = () => {
+    //     return _selectedVal
+    //     }
+
         
-return {mark, name, selectCell}
+return {mark, name, selectCell, }
 }
 
 const gameplay = (() => {
@@ -76,7 +83,21 @@ gb.createBoard();
 let player1 = player('X', 'Terry');
 let player2 = player('O', 'Barry');
 const game = gameplay;
-cPlayer = gameplay.checkPlayer();
-cPlayer.selectCell();
-cPlayer = gameplay.switchPlayer();
-                                         
+
+let move1 = player1.selectCell();
+let move2 = player2.selectCell();
+let move3 = player1.selectCell();
+
+
+// cyborg's in deep thoughts — Today at 8:18 AM
+// So, the main problem is 
+//       const selectCell = () => {
+//         _selectedVal = gameDom.addEventListener('click', on)
+//         return
+//        }
+
+// If you put it inside a loop, you are attaching multiple click listeners to gameDom which will fire all at once when clicked. So, you have to find another way of doing it. 
+// One suggestion I can think of:
+// Keep the event listerner to gameDom always and switching the player based on whose turn it is.
+
+// This is not the only solution though, you can try other things as well.
