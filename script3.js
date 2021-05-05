@@ -26,6 +26,11 @@ const board = (() => {
         if (_counter < 9) {
         console.log(e.target.id);
         _counter ++;
+        if (_counter % 2 == 0) {
+            currentPlayer = player2
+        } else if (_counter % 2 == 1) {
+            currentPlayer = player1
+        }
         e.target.textContent = currentPlayer.mark;
         _gameboard[e.target.id] = currentPlayer.mark;
         console.log(_counter);
@@ -36,7 +41,7 @@ const board = (() => {
     
 return {createBoard, _gameboard, _counter, clickOn, clickOff}
 })();
-//////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 const player = (mark, name) => {
     this.mark = mark;
@@ -46,6 +51,21 @@ return {mark, name}
 }
 
 ///////////////////////////////////////////////////////////////////////
+
+const gameplay = (() => {
+    const switchPlayer = () => {
+        if (currentPlayer === player2) {
+            currentPlayer = player1;
+            return currentPlayer;} else if (currentPlayer === player1) {
+            currentPlayer = player2;
+            return currentPlayer;
+        }
+    }
+
+    return {switchPlayer}
+})()
+
+////////////////////////////////////////////////////////////////////////
 
 const gb = board;
 gb.createBoard();
