@@ -24,7 +24,6 @@ const board = (() => {
 
     function turnClick(e) {
         if (_counter < 9) {
-        console.log(e.target.id);
         _counter ++;
         if (_counter % 2 == 0) {
             currentPlayer = player2
@@ -33,7 +32,6 @@ const board = (() => {
         }
         e.target.textContent = currentPlayer.mark;
         _gameboard[e.target.id] = currentPlayer.mark;
-        console.log(_counter);
         }
         clickOff
     }
@@ -53,16 +51,7 @@ return {mark, name}
 ///////////////////////////////////////////////////////////////////////
 
 const gameplay = (() => {
-    const switchPlayer = () => {
-        if (currentPlayer === player2) {
-            currentPlayer = player1;
-            return currentPlayer;} else if (currentPlayer === player1) {
-            currentPlayer = player2;
-            return currentPlayer;
-        }
-    }
 
-    return {switchPlayer}
 })()
 
 ////////////////////////////////////////////////////////////////////////
