@@ -1,16 +1,16 @@
 .cell {
-    width: 20vw;
-    height: 25vh;
+    width: 24vw;
+    height: 24vh;
     min-width: 50px;
     min-height: 60px;
-    border: 1px solid;
+    border: 3px solid lightcoral;
+    border-radius: 2px;
     text-align: center;
     line-height: 25vh;
-    font-size: 45px;
-
+    font-size: 15vh;
+    flex-basis: 33%;
+    color: rgb(60, 16, 253);
 }
-
-
 
 .cell:hover {
     cursor:pointer;
@@ -25,8 +25,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 80vw;
-    margin: 50px auto;
+    width: 80%;
+    margin: 20px auto;
 }
 
 [id="1"], [id="4"], [id="7"], [id="2"], [id="5"], 
@@ -46,3 +46,18 @@
 [id="7"], [id="8"], [id="9"] {
     border-bottom: none;
 }
+
+#players {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 10px auto;
+    width: 70vw;
+}
+
+#p1, #p2{
+    font-size: 30px;
+    color: grey;
+}
+
+body {background: lightyellow;}

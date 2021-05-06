@@ -2,6 +2,8 @@ const board = (() => {
     let gameDom = document.getElementById("gameContainer");
     let _gameboard = {};
     let _counter = 0;
+    let p1 = document.getElementById('p1');
+    let p2 = document.getElementById('p2');
     
     createBoard = () => {
         for (i = 1; i <= 9; i++) {
@@ -23,17 +25,27 @@ const board = (() => {
     }
 
     function turnClick(e) {
-        if (_counter < 9) {
-        _counter ++;
-        if (_counter % 2 == 0) {
-            currentPlayer = player2
-        } else if (_counter % 2 == 1) {
-            currentPlayer = player1
+        if (e.target.textContent === '') {
+            if (_counter <= 9) {
+                _counter ++;
+                if (_counter % 2 == 0) {
+                    currentPlayer = player2;
+                    p1.style.color = 'rgb(60, 16, 253)';
+                    p2.style.color = 'grey';
+                } else if (_counter % 2 == 1) {
+                    currentPlayer = player1
+                    p2.style.color = 'rgb(60, 16, 253)';
+                    p1.style.color = 'grey'
+                }
+                e.target.textContent = currentPlayer.mark;
+                _gameboard[e.target.id] = currentPlayer.mark;
+                } 
+                if (_counter === 9) {
+                p1.style.color = 'grey';
+                p2.style.color = 'grey';
+                clickOff;
+                }
         }
-        e.target.textContent = currentPlayer.mark;
-        _gameboard[e.target.id] = currentPlayer.mark;
-        }
-        clickOff
     }
 
     
@@ -50,9 +62,9 @@ return {mark, name}
 
 ///////////////////////////////////////////////////////////////////////
 
-const gameplay = (() => {
+const gameplay = () => {
 
-})()
+}
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -61,4 +73,6 @@ gb.createBoard();
 let player1 = player('X', 'Terry');
 let player2 = player('O', 'Barry');
 let currentPlayer = player1;
+let p1 = document.getElementById('p1');
+p1.style.color = 'limegreen'
 gb.clickOn()
