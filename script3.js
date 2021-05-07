@@ -62,9 +62,17 @@ return {mark, name}
 
 ///////////////////////////////////////////////////////////////////////
 
-const gameplay = () => {
+const gameplay = (() => {
+    const marks = ['X', 'O'];
+    const checkWin = () => {
+        for (mark of marks) {
+            console.log(mark);
+            console.log(gb._gameboard);
+        }
+    };
 
-}
+    return {checkWin,}
+})()
 
 ////////////////////////////////////////////////////////////////////////
 
