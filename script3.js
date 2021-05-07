@@ -39,11 +39,13 @@ const board = (() => {
                 }
                 e.target.textContent = currentPlayer.mark;
                 _gameboard[e.target.id] = currentPlayer.mark;
+                gameplay.checkWin()
                 } 
                 if (_counter === 9) {
                 p1.style.color = 'grey';
                 p2.style.color = 'grey';
                 clickOff;
+                console.log("It's a draw!")
                 }
         }
     }
@@ -51,6 +53,8 @@ const board = (() => {
     
 return {createBoard, _gameboard, _counter, clickOn, clickOff}
 })();
+
+const gb = board;
 ///////////////////////////////////////////////////////////////////////
 
 const player = (mark, name) => {
@@ -64,11 +68,9 @@ return {mark, name}
 
 const gameplay = (() => {
     const marks = ['X', 'O'];
+    let board = gb._gameboard;
     const checkWin = () => {
-        for (mark of marks) {
-            console.log(mark);
-            console.log(gb._gameboard);
-        }
+        
     };
 
     return {checkWin,}
@@ -76,7 +78,6 @@ const gameplay = (() => {
 
 ////////////////////////////////////////////////////////////////////////
 
-const gb = board;
 gb.createBoard();
 let player1 = player('X', 'Terry');
 let player2 = player('O', 'Barry');
