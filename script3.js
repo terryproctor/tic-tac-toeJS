@@ -45,7 +45,7 @@ const board = (() => {
                 p1.style.color = 'grey';
                 p2.style.color = 'grey';
                 clickOff;
-                console.log("It's a draw!")
+                document.getElementById('gameMessages').textContent = "It's a draw!"
                 }
         }
     }
@@ -68,13 +68,40 @@ return {mark, name}
 
 const gameplay = (() => {
     const marks = ['X', 'O'];
-    let board = gb._gameboard;
+    let b = gb._gameboard;
+    let message = document.getElementById('gameMessages')
+    
     const checkWin = () => {
-        
+
+        let winningCombo = [
+            [b[1],b[2],b[3]],
+            [b[4],b[5],b[6]],
+            [b[7],b[8],b[9]],
+            [b[1],b[5],b[9]],
+            [b[3],b[5],b[7]],
+            [b[1],b[4],b[7]],
+            [b[2],b[5],b[8]],
+            [b[3],b[6],b[9]],
+                            ];
+
+            winningCombo.forEach(element => {
+                if (element.every((e) => e === 'X')) {
+                    message.textContent = 'X wins';
+                    board.clickOff();
+
+                }
+                if (element.every((e) => e === 'O')) {
+                    message.textContent = 'O wins';
+                    board.clickOff();
+                }
+            })
+
     };
 
     return {checkWin,}
 })()
+
+
 
 ////////////////////////////////////////////////////////////////////////
 
