@@ -1,6 +1,6 @@
 .cell {
-    width: 24vw;
-    height: 24vh;
+    width: 8vw;
+    height: 14vh;
     min-width: 50px;
     min-height: 60px;
     border: 3px solid lightcoral;
@@ -8,7 +8,8 @@
     text-align: center;
     line-height: 25vh;
     font-size: 15vh;
-    flex-basis: 33%;
+    flex: 0;
+    flex-basis: 30%;
     color: rgb(60, 16, 253);
 }
 
@@ -23,6 +24,8 @@
 
 #gameContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     width: 80%;
@@ -61,3 +64,18 @@
 }
 
 body {background: lightyellow;}
+
+#btnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#reset {
+    width: 80px;
+    background-color: rgb(250, 234, 6);
+    border: lightyellow 1px solid;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
