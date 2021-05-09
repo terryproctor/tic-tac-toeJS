@@ -1,7 +1,7 @@
 const board = (() => {
     let gameDom = document.getElementById("gameContainer");
     let _gameboard = {};
-    let _counter = 0;
+    let _counter;
     let p1 = document.getElementById('p1');
     let p2 = document.getElementById('p2');
     
@@ -17,6 +17,9 @@ const board = (() => {
     };
     
     function clickOn() {
+    const btn = document.getElementById('reset');
+    _counter = 0;
+    btn.style.visibility = 'hidden'
     gameDom.addEventListener('click', turnClick, false);
     }
 
@@ -25,6 +28,7 @@ const board = (() => {
     }
 
     function turnClick(e) {
+        const btn = document.getElementById('reset');
         if (e.target.textContent === '') {
             if (_counter <= 9) {
                 _counter ++;
@@ -37,6 +41,10 @@ const board = (() => {
                     p2.style.color = 'rgb(60, 16, 253)';
                     p1.style.color = 'grey'
                 }
+                if (_counter > 0) {
+                    btn.style.visibility = ('visible');
+                    btn.addEventListener('click', gb.reset)
+                } 
                 e.target.textContent = currentPlayer.mark;
                 _gameboard[e.target.id] = currentPlayer.mark;
                 gameplay.checkWin()
@@ -50,8 +58,32 @@ const board = (() => {
         }
     }
 
+    const displayBoard = () => {
+        for(element in _gameboard)
+            {
+            gameDom.children.namedItem(element).textContent = 
+            _gameboard[element];
+        };
+    };
+
+    const reset = () => {
+        gb.clickOff();
+        gb._gameboard = {};
+        
+        let elements = gameDom.getElementsByClassName('cell');
+        while(elements[0]) {
+        elements[0].parentNode.removeChild(elements[0]);
+        }
+        gb.createBoard();
+        gb.clickOn();
+        
+        p1.style.color = 'blue';
+        p2.style.color = 'grey';
+        document.getElementById('gameMessages').textContent = "";
+    }
+
     
-return {createBoard, _gameboard, _counter, clickOn, clickOff}
+return {createBoard, _gameboard, clickOn, clickOff, displayBoard, reset}
 })();
 
 const gb = board;
@@ -87,6 +119,7 @@ const gameplay = (() => {
             winningCombo.forEach(element => {
                 if (element.every((e) => e === 'X')) {
                     message.textContent = 'X wins';
+                    
                     board.clickOff();
 
                 }
@@ -98,7 +131,11 @@ const gameplay = (() => {
 
     };
 
-    return {checkWin,}
+    // const init = () {
+
+    // } 
+
+    return {checkWin, }
 })()
 
 
@@ -110,5 +147,5 @@ let player1 = player('X', 'Terry');
 let player2 = player('O', 'Barry');
 let currentPlayer = player1;
 let p1 = document.getElementById('p1');
-p1.style.color = 'limegreen'
+p1.style.color = 'blue'
 gb.clickOn()
