@@ -80,3 +80,9 @@ body {background: lightyellow;}
     color: white;
     font-weight: 900;
 }
+
+#gameMessages {
+    color: lightcoral;
+    font-weight: 900;
+    font-size: 32px;
+}
