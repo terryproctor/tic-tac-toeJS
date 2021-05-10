@@ -62,7 +62,9 @@
     color: grey;
 }
 
-body {background: lightyellow;}
+body {
+    background: lightyellow;
+}
 
 #btnContainer {
     display: flex;
@@ -81,8 +83,33 @@ body {background: lightyellow;}
     font-weight: 900;
 }
 
+#nameForm {
+    display: block;
+}
+
+#submit {
+    width: 80px;
+    background-color: lightcoral;
+    border: lightyellow 1px solid;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    font-weight: 900;
+    margin-left: 45.5%;
+}
+
 #gameMessages {
     color: lightcoral;
     font-weight: 900;
     font-size: 32px;
+}
+
+h1 {
+    color: lightcoral;
+    width: 100%;
+    text-align: center;
+}
+
+#nameArea {
 }

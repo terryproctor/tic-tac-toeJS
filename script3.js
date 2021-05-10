@@ -87,6 +87,7 @@ return {createBoard, _gameboard, clickOn, clickOff, displayBoard, reset}
 })();
 
 const gb = board;
+
 ///////////////////////////////////////////////////////////////////////
 
 const player = (mark, name) => {
@@ -115,37 +116,55 @@ const gameplay = (() => {
             [b[2],b[5],b[8]],
             [b[3],b[6],b[9]],
                             ];
-
+        marks.forEach(mark => {
             winningCombo.forEach(element => {
-                if (element.every((e) => e === 'X')) {
-                    message.textContent = 'X wins';
-                    
+                if (element.every((e) => e === mark)) {
+                    message.textContent = `${mark} wins`;
                     board.clickOff();
-
-                }
-                if (element.every((e) => e === 'O')) {
-                    message.textContent = 'O wins';
-                    board.clickOff();
+   
                 }
             })
+        })
 
-    };
-
-    // const init = () {
-
-    // } 
-
+    }
     return {checkWin, }
 })()
 
-
-
 ////////////////////////////////////////////////////////////////////////
-
 gb.createBoard();
+let gArea = document.getElementById('gameArea');
+let nArea = document.getElementById('nameArea');
+gArea.style.visibility="hidden";
+let form = document.getElementById("nameForm");
+
+let p1_name;
+let p2_name;
+
+let collectName = (name1, name2) => {
+    console.log(name1);
+    console.log(name2);
+    let names = [name1, name2]
+    return names;
+}
+
+form.addEventListener('submit', function(e, p1_name, p2_name){
+    e.preventDefault();
+    pX_name = form.querySelector('input[name="playerx"]').value;
+    pO_name = form.querySelector('input[name="playero"]').value;
+    collectName(pX_name, pO_name);
+    nArea.style.display="none";
+    gArea.style.visibility="visible";
+
+    }
+);
+
+
 let player1 = player('X', 'Terry');
 let player2 = player('O', 'Barry');
 let currentPlayer = player1;
 let p1 = document.getElementById('p1');
+let p2 = document.getElementById('p2');
+p1.textContent = `${player1.name} X`;
+p2.textContent = `${player2.name} O`
 p1.style.color = 'blue'
 gb.clickOn()

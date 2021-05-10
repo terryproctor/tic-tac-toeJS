@@ -6,11 +6,25 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
+<div id="nameArea">
+    <h1>Tic Tac Toe</h1>
+    <form id="nameForm">
+        <div id="players">
+            <p> Player X: 
+                <input type="text" name="playerx" placeholder="Name" required>
+            </p>
+            <p> Player O: 
+                <input type="text" name="playero" placeholder="Name" required>
+            </p>
+        </div>
+        <button id="submit" type="submit">Submit</button>
+    </form>
+</div>
 <div id="gameArea">
     <div id="players">
-        <h3 id="p1">Player X</h3>
+        <h3 id="p1"></h3>
         <h2 id="gameMessages"></h2>
-        <h3 id="p2">Player O</h3>
+        <h3 id="p2"></h3>
     </div>
     <div id="gameContainer">
     </div>
