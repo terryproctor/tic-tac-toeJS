@@ -137,30 +137,18 @@ let nArea = document.getElementById('nameArea');
 gArea.style.visibility="hidden";
 let form = document.getElementById("nameForm");
 
-let p1_name;
-let p2_name;
-
-let collectName = (name1, name2) => {
-    console.log(name1);
-    console.log(name2);
-    let names = [name1, name2]
-    return names;
-}
-
-form.addEventListener('submit', function(e, p1_name, p2_name){
+form.addEventListener('submit', function(e){
     e.preventDefault();
     pX_name = form.querySelector('input[name="playerx"]').value;
     pO_name = form.querySelector('input[name="playero"]').value;
-    collectName(pX_name, pO_name);
     nArea.style.display="none";
     gArea.style.visibility="visible";
-
-    }
+}
 );
 
 
-let player1 = player('X', 'Terry');
-let player2 = player('O', 'Barry');
+let player1 = player('X', 'Player1');
+let player2 = player('O', 'Player2');
 let currentPlayer = player1;
 let p1 = document.getElementById('p1');
 let p2 = document.getElementById('p2');
