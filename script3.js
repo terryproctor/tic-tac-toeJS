@@ -119,7 +119,7 @@ const gameplay = (() => {
         marks.forEach(mark => {
             winningCombo.forEach(element => {
                 if (element.every((e) => e === mark)) {
-                    message.textContent = `${mark} wins`;
+                    message.textContent = `${currentPlayer.name} wins`;
                     board.clickOff();
    
                 }
@@ -157,8 +157,8 @@ player2 = player('O', O);
 // let currentPlayer = player1;
 let p1 = document.getElementById('p1');
 let p2 = document.getElementById('p2');
-p1.textContent = `${player1.name} X`;
-p2.textContent = `${player2.name} O`
-p1.style.color = 'blue'
-gb.clickOn()
+p1.textContent = `${player1.name} ${player1.mark}`;
+p2.textContent = `${player2.name} ${player2.mark}`;
+p1.style.color = 'blue';
+gb.clickOn();
 }
