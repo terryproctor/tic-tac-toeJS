@@ -137,18 +137,25 @@ let nArea = document.getElementById('nameArea');
 gArea.style.visibility="hidden";
 let form = document.getElementById("nameForm");
 
+let X = "";
+let O = "";
+
 form.addEventListener('submit', function(e){
     e.preventDefault();
     pX_name = form.querySelector('input[name="playerx"]').value;
     pO_name = form.querySelector('input[name="playero"]').value;
+    X = pX_name;
+    O = pO_name;
     nArea.style.display="none";
     gArea.style.visibility="visible";
+    
 }
 );
+console.log(X);
+console.log(O);
 
-
-let player1 = player('X', 'Player1');
-let player2 = player('O', 'Player2');
+let player1 = player('X', X);
+let player2 = player('O', O);
 let currentPlayer = player1;
 let p1 = document.getElementById('p1');
 let p2 = document.getElementById('p2');
