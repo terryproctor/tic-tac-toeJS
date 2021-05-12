@@ -2,6 +2,7 @@ const board = (() => {
     let gameDom = document.getElementById("gameContainer");
     let _gameboard = {};
     let _counter;
+    let win = false;
     let p1 = document.getElementById('p1');
     let p2 = document.getElementById('p2');
     
@@ -49,7 +50,7 @@ const board = (() => {
                 _gameboard[e.target.id] = currentPlayer.mark;
                 gameplay.checkWin()
                 } 
-                if (_counter === 9) {
+                if (_counter === 9 && gb.win == false) {
                 p1.style.color = 'grey';
                 p2.style.color = 'grey';
                 clickOff;
@@ -69,7 +70,7 @@ const board = (() => {
     const reset = () => {
         gb.clickOff();
         gb._gameboard = {};
-        
+        //remove board from DOM
         let elements = gameDom.getElementsByClassName('cell');
         while(elements[0]) {
         elements[0].parentNode.removeChild(elements[0]);
@@ -80,10 +81,11 @@ const board = (() => {
         p1.style.color = 'blue';
         p2.style.color = 'grey';
         document.getElementById('gameMessages').textContent = "";
+        gb.win = false;
     }
 
     
-return {createBoard, _gameboard, clickOn, clickOff, displayBoard, reset}
+return {createBoard, _gameboard, clickOn, clickOff, displayBoard, reset, win}
 })();
 
 const gb = board;
@@ -121,6 +123,7 @@ const gameplay = (() => {
                 if (element.every((e) => e === mark)) {
                     message.textContent = `${currentPlayer.name} wins`;
                     board.clickOff();
+                    gb.win=true;
    
                 }
             })
